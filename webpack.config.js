@@ -21,7 +21,7 @@ module.exports = {
                     loader: 'html-loader',
                     options: {
                         minimize: true,
-                        attrs: [':data-src']
+                        // attrs: [':data-src']
                     }
                 }
             },
@@ -29,7 +29,8 @@ module.exports = {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({
                     fallback: "style-loader",
-                    use: "css-loader"
+                    use: "css-loader",
+                    publicPath: '../'
                 })
             },
             {
@@ -45,7 +46,7 @@ module.exports = {
                         options: {
                             limit: 8192,
                             name: '[name]-[hash].[ext]',
-                            outputPath: './imgs'
+                            outputPath: 'imgs/',
                         }
                     }
                 ]

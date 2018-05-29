@@ -26,7 +26,7 @@
     "webpack-dev-server": "^3.1.4"
   },
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --public --disableHostCheck --port 8000",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --content-base ./src --public --disableHostCheck --port 8080",
     "build": "cross-env NODE_ENV=production webpack"
   },
   "author": "",

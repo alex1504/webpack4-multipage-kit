@@ -1,6 +1,7 @@
 // stylesheet
 import '../../css/weui.min.css';
 import '../../css/jquery-weui.min.css';
+import '../../css/common.css';
 
 // lib
 import "expose-loader?$!jquery";
