@@ -9,6 +9,7 @@
     "clean-webpack-plugin": "^0.1.19",
     "html-webpack-plugin": "^3.2.0",
     "jquery": "^3.3.1",
+    "vue": "^2.5.16",
     "webpack": "^4.9.1"
   },
   "devDependencies": {
@@ -16,13 +17,16 @@
     "cross-env": "^5.1.6",
     "css-loader": "^0.28.11",
     "expose-loader": "^0.7.5",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^1.1.11",
+    "html-loader": "^0.5.5",
     "style-loader": "^0.21.0",
     "url-loader": "^1.0.1",
     "webpack-cli": "^2.1.4",
     "webpack-dev-server": "^3.1.4"
   },
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --port 8080",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --public --disableHostCheck --port 8000",
     "build": "cross-env NODE_ENV=production webpack"
   },
   "author": "",

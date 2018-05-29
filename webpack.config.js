@@ -1,7 +1,7 @@
-const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
     mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
@@ -16,8 +16,21 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.(html)$/,
+                use: {
+                    loader: 'html-loader',
+                    options: {
+                        minimize: true,
+                        attrs: [':data-src']
+                    }
+                }
+            },
+            {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader']
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: "css-loader"
+                })
             },
             {
                 test: /\.js$/,
@@ -25,17 +38,24 @@ module.exports = {
                 loader: ["babel-loader"]
             },
             {
-                test: /\.(png|jpg|gif)$/,
+                test: /\.(png|jpg|jpeg|gif|svg)$/,
                 use: [
                     {
                         loader: 'url-loader',
                         options: {
-                            limit: 8192
+                            limit: 8192,
+                            name: '[name]-[hash].[ext]',
+                            outputPath: './imgs'
                         }
                     }
                 ]
             }
         ]
+    },
+    resolve: {
+        alias: {
+            'imgs': path.resolve(__dirname, '../../imgs')
+        }
     },
     optimization: {
         splitChunks: {
@@ -50,12 +70,7 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin('dist'),
-        // 全局引入jQuery
-        new webpack.ProvidePlugin({
-            $: "jquery",
-            "jQuery": "jquery",
-            "window.jQuery": "jquery"
-        }),
+        new ExtractTextPlugin('css/[name].[hash].css'),
         new HtmlWebpackPlugin({
             title: 'index',
             template: './src/pages/index/index.html',
