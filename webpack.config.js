@@ -14,8 +14,7 @@ module.exports = {
         filename: 'js/[name]-[hash].js'
     },
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.(html)$/,
                 use: {
                     loader: 'html-loader',
@@ -26,10 +25,10 @@ module.exports = {
                 }
             },
             {
-                test: /\.css$/,
+                test: /\.(css|less)$/,
                 use: ExtractTextPlugin.extract({
                     fallback: "style-loader",
-                    use: "css-loader",
+                    use: ["css-loader", "less-loader"],
                     publicPath: '../'
                 })
             },
@@ -40,22 +39,20 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg|jpeg|gif|svg)$/,
-                use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            limit: 8192,
-                            name: '[name]-[hash].[ext]',
-                            outputPath: 'imgs/',
-                        }
+                use: [{
+                    loader: 'url-loader',
+                    options: {
+                        limit: 8192,
+                        name: '[name]-[hash].[ext]',
+                        outputPath: 'imgs/',
                     }
-                ]
+                }]
             }
         ]
     },
     resolve: {
         alias: {
-            'imgs': path.resolve(__dirname, '../../imgs')
+            'vue$': 'vue/dist/vue.common.js'
         }
     },
     optimization: {
