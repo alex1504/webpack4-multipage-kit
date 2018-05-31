@@ -4,12 +4,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
+const ExtractThemePlugin = require("./extract-theme-plugin");
+
 module.exports = {
     mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
     entry: {
-        "themeDefault": "./src/less/theme-default/main.js",
-        "themeA": "./src/less/theme-a/main.js",
-        "themeB": "./src/less/theme-b/main.js",
+        "themeDefault": "./src/less/theme/theme-default/main.js",
+        "themeA": "./src/less/theme/theme-a/main.js",
+        "themeB": "./src/less/theme/theme-b/main.js",
         "styles": "./src/less/main.js",
         "index": "./src/pages/index/main.js",
         "login": "./src/pages/login/main.js"
@@ -80,7 +82,7 @@ module.exports = {
             filename: 'index.html',
             hash: true,
             inject: 'body',
-            chunks: ['styles', 'vendors', 'index']
+            chunks: ['themeDefault', 'styles', 'vendors', 'index']
         }),
         new HtmlWebpackPlugin({
             title: 'login',
@@ -88,7 +90,10 @@ module.exports = {
             filename: 'login.html',
             hash: true,
             inject: 'body',
-            chunks: ['styles', 'vendors', 'login']
+            chunks: ['themeDefault', 'styles', 'vendors', 'login']
+        }),
+        new ExtractThemePlugin({
+            options: ''
         })
     ]
 };
