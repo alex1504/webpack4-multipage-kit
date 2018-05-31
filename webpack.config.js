@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -6,6 +7,10 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
     mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
     entry: {
+        "themeDefault": "./src/less/theme-default/main.js",
+        "themeA": "./src/less/theme-a/main.js",
+        "themeB": "./src/less/theme-b/main.js",
+        "styles": "./src/less/main.js",
         "index": "./src/pages/index/main.js",
         "login": "./src/pages/login/main.js"
     },
@@ -52,7 +57,7 @@ module.exports = {
     },
     resolve: {
         alias: {
-            'vue$': 'vue/dist/vue.common.js'
+            'vue': 'vue/dist/vue.js'
         }
     },
     optimization: {
@@ -75,7 +80,7 @@ module.exports = {
             filename: 'index.html',
             hash: true,
             inject: 'body',
-            chunks: ['vendors', 'index']
+            chunks: ['styles', 'vendors', 'index']
         }),
         new HtmlWebpackPlugin({
             title: 'login',
@@ -83,7 +88,7 @@ module.exports = {
             filename: 'login.html',
             hash: true,
             inject: 'body',
-            chunks: ['vendors', 'login']
+            chunks: ['styles', 'vendors', 'login']
         })
     ]
 };

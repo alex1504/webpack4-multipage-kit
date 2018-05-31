@@ -1,7 +1,5 @@
-// stylesheet
-import "../../less/weui.min.less";
-import "../../less/jquery-weui.min.less";
-import "../../less/common.less";
+// common stylesheet
+import "./main.less";
 
 // lib
 import "expose-loader?$!jquery";
