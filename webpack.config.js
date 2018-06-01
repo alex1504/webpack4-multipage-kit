@@ -9,11 +9,11 @@ module.exports = {
     mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
     entry: {
         "styles": "./src/less/main.js",
+        "index": "./src/pages/index/main.js",
+        "login": "./src/pages/login/main.js",
         "themeDefault": "./src/theme/theme-default/main.js",
         "themeA": "./src/theme/theme-a/main.js",
         "themeB": "./src/theme/theme-b/main.js",
-        "index": "./src/pages/index/main.js",
-        "login": "./src/pages/login/main.js"
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
