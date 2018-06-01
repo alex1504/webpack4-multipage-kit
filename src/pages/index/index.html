@@ -12,7 +12,7 @@
     <div id="app">
         <div>{{msg}}</div>
         <div>
-            <button @click="changeToATheme">A主题</button>
+            <button v-for="themeName,index in THEME_NAME_ARR" @click="changeTheme(themeName)">{{themeName}}主题</button>
             <img src="../../imgs/panda.gif" alt="">
         </div>
     </div>

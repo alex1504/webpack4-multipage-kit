@@ -2,15 +2,15 @@ import Vue from 'vue';
 
 const app = new Vue({
     el: '#app',
-    data(){
+    data() {
         return {
             msg: "I'm Login Page"
         }
     },
-    methods:{
+    methods: {
 
     },
-    mounted(){
+    mounted() {
         console.log('Hellow Vue')
     }
 })

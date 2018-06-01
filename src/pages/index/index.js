@@ -2,24 +2,34 @@ import Vue from 'vue';
 
 const app = new Vue({
     el: '#app',
-    data(){
+    data() {
         return {
+            THEME_CONFIG: window.THEME_CONFIG,
+            THEME_NAME_ARR: Object.keys(THEME_CONFIG),
             msg: "I'm Index Page"
         }
     },
-    methods:{
-        changeToATheme(){
-            let themeNode = $("<link rel='stylesheet'>");
-            themeNode.attr('href', 'css/themeA.css')
-            $("link").each((index, el)=>{
-                if($(el).attr('href').indexOf('theme') !== -1){
-                    $(el).remove()
+    methods: {
+        changeTheme(themeName) {
+            const themeNode = $("<link rel='stylesheet'>");
+            const href = this.THEME_CONFIG[themeName];
+            let flag = false;
+            themeNode.attr('href', href)
+            $("link").each((index, el) => {
+                if ($(el).attr('href').indexOf('theme') !== -1) {
+                    const oldHref = $(el).attr('href');
+                    if (oldHref !== href) {
+                        $(el).remove();
+                        flag = true;
+                    }
                 }
             })
-            $("link").eq(0).before(themeNode)
+            if (flag) {
+                $("link").eq(0).before(themeNode)
+            }
         }
     },
-    mounted(){
+    mounted() {
         console.log('Hellow Vue')
     }
 })

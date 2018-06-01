@@ -3,8 +3,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-
-const ExtractThemePlugin = require("./extract-theme-plugin");
+const ExtractThemePlugin = require("./webpackPlugins/extract-theme-plugin");
 
 module.exports = {
     mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
@@ -82,7 +81,7 @@ module.exports = {
             filename: 'index.html',
             hash: true,
             inject: 'body',
-            chunks: ['themeDefault', 'styles', 'vendors', 'index']
+            chunks: ['themeDefault', 'themeA', 'themeB', 'styles', 'vendors', 'index']
         }),
         new HtmlWebpackPlugin({
             title: 'login',
@@ -90,7 +89,7 @@ module.exports = {
             filename: 'login.html',
             hash: true,
             inject: 'body',
-            chunks: ['themeDefault', 'styles', 'vendors', 'login']
+            chunks: ['themeDefault', 'themeA', 'themeB', 'styles', 'vendors', 'login']
         }),
         new ExtractThemePlugin({
             options: ''
