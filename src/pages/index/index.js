@@ -25,7 +25,7 @@ const app = new Vue({
                 }
             })
             if (flag) {
-                $("link").eq(0).before(themeNode)
+                $("head").append(themeNode)
             }
         }
     },
@@ -33,3 +33,4 @@ const app = new Vue({
         console.log('Hellow Vue')
     }
 })
+

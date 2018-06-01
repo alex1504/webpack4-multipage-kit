@@ -8,10 +8,10 @@ const ExtractThemePlugin = require("./webpackPlugins/extract-theme-plugin");
 module.exports = {
     mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
     entry: {
-        "themeDefault": "./src/less/theme/theme-default/main.js",
-        "themeA": "./src/less/theme/theme-a/main.js",
-        "themeB": "./src/less/theme/theme-b/main.js",
         "styles": "./src/less/main.js",
+        "themeDefault": "./src/theme/theme-default/main.js",
+        "themeA": "./src/theme/theme-a/main.js",
+        "themeB": "./src/theme/theme-b/main.js",
         "index": "./src/pages/index/main.js",
         "login": "./src/pages/login/main.js"
     },
@@ -75,6 +75,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin('dist'),
         new ExtractTextPlugin('css/[name].[hash].css'),
+        // START HtmlWebpackPlugin
         new HtmlWebpackPlugin({
             title: 'index',
             template: './src/pages/index/index.html',
@@ -91,6 +92,7 @@ module.exports = {
             inject: 'body',
             chunks: ['themeDefault', 'themeA', 'themeB', 'styles', 'vendors', 'login']
         }),
+        // END HtmlWebpackPlugin
         new ExtractThemePlugin({
             options: ''
         })
