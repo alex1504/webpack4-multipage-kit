@@ -11,9 +11,9 @@ module.exports = {
         "styles": "./src/less/main.js",
         "index": "./src/pages/index/main.js",
         "login": "./src/pages/login/main.js",
-        "themeDefault": "./src/theme/theme-default/main.js",
-        "themeA": "./src/theme/theme-a/main.js",
-        "themeB": "./src/theme/theme-b/main.js",
+        "themeGreen": "./src/theme/green/main.js",
+        "themeOrange": "./src/theme/orange/main.js",
+        "themeDefault": "./src/theme/default/main.js",
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -82,7 +82,7 @@ module.exports = {
             filename: 'index.html',
             hash: true,
             inject: 'body',
-            chunks: ['themeDefault', 'themeA', 'themeB', 'styles', 'vendors', 'index']
+            chunks: ['themeDefault','themeGreen', 'themeOrange', 'styles', 'vendors', 'index']
         }),
         new HtmlWebpackPlugin({
             title: 'login',
@@ -90,7 +90,7 @@ module.exports = {
             filename: 'login.html',
             hash: true,
             inject: 'body',
-            chunks: ['themeDefault', 'themeA', 'themeB', 'styles', 'vendors', 'login']
+            chunks: ['themeDefault','themeGreen', 'themeOrange', 'styles', 'vendors', 'login']
         }),
         // END HtmlWebpackPlugin
         new ExtractThemePlugin({

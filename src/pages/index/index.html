@@ -4,6 +4,9 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <script>
+       window.THEME = 'orange'
+    </script>
     <title>Index</title>
 </head>
 
@@ -12,8 +15,7 @@
     <ul class="ul">
         <button v-for="themeName,index in THEME_NAME_ARR" :key="index" @click="changeTheme(themeName)">
             {{themeName}}
-        </button
-        <div style="clear: both;"></div>
+        </button>
     </ul>
 </div>
 

@@ -1,5 +1,8 @@
 import Vue from 'vue';
+import themeInitPlugin from '../../plugins/theme-initialize';
 import Util from '../../js/utils';
+
+Vue.use(themeInitPlugin);
 
 const app = new Vue({
     el: '#app',

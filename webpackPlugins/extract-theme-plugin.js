@@ -11,25 +11,45 @@ ExtractThemePlugin.prototype.apply = function (compiler) {
             'html-webpack-plugin-before-html-processing',
             (data) => {
                 const areaJson = JSON.parse(data.plugin.assetJson);
+                const originHtml = data.html;
+                console.log(areaJson)
                 areaJson.forEach(outputPath => {
                     if (outputPath.indexOf('css/theme') !== -1) {
                         const match = outputPath.match(/(theme\w*)\./)[1];
                         THEME_CONFIG[match] = outputPath;
                     }
-                })
-                const scriptTag = `<script>window.THEME_CONFIG = ${JSON.stringify(THEME_CONFIG)}</script>`
-                data.html = data.html.toString().split('</head>')[0] + scriptTag + '</head>' + data.html.toString().split('<head>')[1];
+                });
+                const tConfScript = `
+                    <script>window.THEME_CONFIG = ${JSON.stringify(THEME_CONFIG)}</script>
+                `;
+                const initThemeScript = `
+                <script>
+                    window.onload = function(){
+                       const themeName = window.THEME;
+                       const themeKey = 'theme' + themeName.slice(0,1).toUpperCase() + themeName.slice(1);
+                       const href = THEME_CONFIG[themeKey];
+                       const link = document.createElement('link');
+                       link.rel = 'stylesheet';
+                       link.href = href;
+                       document.querySelector('head').appendChild(link)
+                    }
+                </script>`;
+                data.html = originHtml.toString().split('</head>')[0];
+                data.html += tConfScript;
+                data.html += initThemeScript;
+                data.html += '</head>';
+                data.html += originHtml.toString().split('<head>')[1];
             }
-        )
+        );
         compilation.plugin(
             'html-webpack-plugin-alter-asset-tags',
             (data) => {
                 console.log(data, '!!!!!!')
-                // Remove rest theme css link
+                // Remove theme css link
                 let index = data.head.length - 1;
                 while (index >= 0) {
                     let tag = data.head[index];
-                    if (tag.tagName === 'link' && /theme[^Default]/.test(tag.attributes.href)) {
+                    if (tag.tagName === 'link' && /css\/theme/.test(tag.attributes.href)) {
                         console.log(tag.attributes.href, '*****************************')
                         data.head.splice(index, 1)
                     }
