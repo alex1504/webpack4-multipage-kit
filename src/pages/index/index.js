@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import Util from '../../js/utils';
 
 const app = new Vue({
     el: '#app',
@@ -30,7 +31,7 @@ const app = new Vue({
         }
     },
     mounted() {
-        console.log('Hellow Vue')
+        Util.log('Hellow index.js')
     }
-})
+});
 
