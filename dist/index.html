@@ -1,0 +1,14 @@
+<!DOCTYPE html> <html> <head> <meta http-equiv=Content-Type content="text/html; charset=UTF-8"> <meta name=viewport content="initial-scale=1,maximum-scale=1,user-scalable=no,width=device-width"> <script>window.THEME="orange"</script> <title>Index</title> 
+                    <script>window.THEME_CONFIG = {"themeDefault":"css/themeDefault.a3814fd00aa68c772efd.css?a3814fd00aa68c772efd","themeGreen":"css/themeGreen.a3814fd00aa68c772efd.css?a3814fd00aa68c772efd","themeOrange":"css/themeOrange.a3814fd00aa68c772efd.css?a3814fd00aa68c772efd"}</script>
+                
+                <script>
+                    window.onload = function(){
+                       const themeName = window.THEME;
+                       const themeKey = 'theme' + themeName.slice(0,1).toUpperCase() + themeName.slice(1);
+                       const href = THEME_CONFIG[themeKey];
+                       const link = document.createElement('link');
+                       link.rel = 'stylesheet';
+                       link.href = href;
+                       document.querySelector('head').appendChild(link)
+                    }
+                </script><link href="css/styles.a3814fd00aa68c772efd.css?a3814fd00aa68c772efd" rel="stylesheet"><link href="css/index.a3814fd00aa68c772efd.css?a3814fd00aa68c772efd" rel="stylesheet"></head> <meta http-equiv=Content-Type content="text/html; charset=UTF-8"> <meta name=viewport content="initial-scale=1,maximum-scale=1,user-scalable=no,width=device-width"> <script>window.THEME="orange"</script> <title>Index</title> </head> <body> <div id=app> <ul class=ul> <button v-for="themeName,index in THEME_NAME_ARR" :key=index @click=changeTheme(themeName)> {{themeName}} </button> </ul> </div> <script type="text/javascript" src="js/vendors-a3814fd00aa68c772efd.js?a3814fd00aa68c772efd"></script><script type="text/javascript" src="js/index-a3814fd00aa68c772efd.js?a3814fd00aa68c772efd"></script></body> </html>

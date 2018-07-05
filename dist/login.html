@@ -1,0 +1,14 @@
+<!DOCTYPE html> <html lang=en> <head> <meta charset=UTF-8> <meta name=viewport content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1"> <meta http-equiv=X-UA-Compatible content="ie=edge"> <title>Document</title> 
+                    <script>window.THEME_CONFIG = {"themeDefault":"css/themeDefault.a3814fd00aa68c772efd.css?a3814fd00aa68c772efd","themeGreen":"css/themeGreen.a3814fd00aa68c772efd.css?a3814fd00aa68c772efd","themeOrange":"css/themeOrange.a3814fd00aa68c772efd.css?a3814fd00aa68c772efd"}</script>
+                
+                <script>
+                    window.onload = function(){
+                       const themeName = window.THEME;
+                       const themeKey = 'theme' + themeName.slice(0,1).toUpperCase() + themeName.slice(1);
+                       const href = THEME_CONFIG[themeKey];
+                       const link = document.createElement('link');
+                       link.rel = 'stylesheet';
+                       link.href = href;
+                       document.querySelector('head').appendChild(link)
+                    }
+                </script><link href="css/styles.a3814fd00aa68c772efd.css?a3814fd00aa68c772efd" rel="stylesheet"><link href="css/login.a3814fd00aa68c772efd.css?a3814fd00aa68c772efd" rel="stylesheet"></head> <meta charset=UTF-8> <meta name=viewport content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1"> <meta http-equiv=X-UA-Compatible content="ie=edge"> <title>Document</title> </head> <body> <div id=app> <div>{{msg}}</div> <div> <img src=imgs/panda-1b1120ce08c9358b9eae0fb999803563.gif alt=""> </div> </div> <script type="text/javascript" src="js/vendors-a3814fd00aa68c772efd.js?a3814fd00aa68c772efd"></script><script type="text/javascript" src="js/login-a3814fd00aa68c772efd.js?a3814fd00aa68c772efd"></script></body> </html>
