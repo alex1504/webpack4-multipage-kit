@@ -1,24 +1,22 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <script>
-       window.THEME = 'orange'
-    </script>
-    <title>Index</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>主页</title>
 </head>
 
 <body>
-<div id="app">
-    <ul class="ul">
-        <button v-for="themeName,index in THEME_NAME_ARR" :key="index" @click="changeTheme(themeName)">
-            {{themeName}}
-        </button>
-    </ul>
-</div>
-
+    <div id="app">
+        <button>{{msg}}</button>
+        <button @click='changeTheme'>changeTheme</button>
+        <button @click='saveTheme'>saveTheme</button>
+        <div>
+            <img src="../../imgs/panda.gif" alt="">
+        </div>
+    </div>
 </body>
 
 </html>

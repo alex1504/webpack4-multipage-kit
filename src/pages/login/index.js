@@ -1,6 +1,7 @@
-import Vue from 'vue';
+import Vue from '../../js/vuemaker';
+import Util from '../../js/utils';
 
-const app = new Vue({
+new Vue({
     el: '#app',
     data() {
         return {
@@ -8,7 +9,7 @@ const app = new Vue({
         }
     },
     methods: {
-
+      
     },
     mounted() {
         console.log('Hellow Vue')

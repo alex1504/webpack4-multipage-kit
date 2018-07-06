@@ -1,7 +1,7 @@
 {
-  "name": "webpack4-multipage-demo",
+  "name": "webpack4-multipage-kit",
   "version": "1.0.0",
-  "description": "",
+  "description": "基于webpack4.0的多主题配置开发套件，ES6、less、多页自动生成配置、默认主题和多主题切换，欢迎star及fork",
   "main": "webpack.config.js",
   "dependencies": {
     "babel-core": "^6.26.3",
@@ -32,6 +32,6 @@
     "build": "cross-env NODE_ENV=production webpack",
     "build:t": "cross-env NODE_ENV=development webpack"
   },
-  "author": "",
+  "author": "jerry",
   "license": "ISC"
 }

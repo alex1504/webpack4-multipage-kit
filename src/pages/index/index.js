@@ -1,40 +1,17 @@
-import Vue from 'vue';
-import themeInitPlugin from '../../plugins/theme-initialize';
+import Vue from '../../js/vuemaker';
 import Util from '../../js/utils';
 
-Vue.use(themeInitPlugin);
-
-const app = new Vue({
+new Vue({
     el: '#app',
     data() {
         return {
-            THEME_CONFIG: window.THEME_CONFIG,
-            THEME_NAME_ARR: Object.keys(THEME_CONFIG),
             msg: "I'm Index Page"
         }
     },
     methods: {
-        changeTheme(themeName) {
-            const themeNode = $("<link rel='stylesheet'>");
-            const href = this.THEME_CONFIG[themeName];
-            let flag = false;
-            themeNode.attr('href', href)
-            $("link").each((index, el) => {
-                if ($(el).attr('href').indexOf('theme') !== -1) {
-                    const oldHref = $(el).attr('href');
-                    if (oldHref !== href) {
-                        $(el).remove();
-                        flag = true;
-                    }
-                }
-            })
-            if (flag) {
-                $("head").append(themeNode)
-            }
-        }
+      
     },
     mounted() {
-        Util.log('Hellow index.js')
+        console.log('Hellow Vue')
     }
-});
-
+})

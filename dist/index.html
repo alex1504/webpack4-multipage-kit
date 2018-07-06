@@ -1,14 +1,14 @@
-<!DOCTYPE html> <html> <head> <meta http-equiv=Content-Type content="text/html; charset=UTF-8"> <meta name=viewport content="initial-scale=1,maximum-scale=1,user-scalable=no,width=device-width"> <script>window.THEME="orange"</script> <title>Index</title> 
-                    <script>window.THEME_CONFIG = {"themeDefault":"css/themeDefault.a3814fd00aa68c772efd.css?a3814fd00aa68c772efd","themeGreen":"css/themeGreen.a3814fd00aa68c772efd.css?a3814fd00aa68c772efd","themeOrange":"css/themeOrange.a3814fd00aa68c772efd.css?a3814fd00aa68c772efd"}</script>
+<!DOCTYPE html> <html lang=en> <head> <meta charset=UTF-8> <meta name=viewport content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1"> <meta http-equiv=X-UA-Compatible content="ie=edge"> <title>主页</title> 
+                    <script>window.THEME_CONFIG = {"default":"css/themeDefault.66600ab2edf5da138ead.css?66600ab2edf5da138ead","green":"css/themeGreen.66600ab2edf5da138ead.css?66600ab2edf5da138ead","orange":"css/themeOrange.66600ab2edf5da138ead.css?66600ab2edf5da138ead"}</script>
                 
                 <script>
                     window.onload = function(){
                        const themeName = window.THEME;
-                       const themeKey = 'theme' + themeName.slice(0,1).toUpperCase() + themeName.slice(1);
-                       const href = THEME_CONFIG[themeKey];
+                       const href = THEME_CONFIG[themeName];
                        const link = document.createElement('link');
                        link.rel = 'stylesheet';
                        link.href = href;
+                       link.id = 'theme';
                        document.querySelector('head').appendChild(link)
                     }
-                </script><link href="css/styles.a3814fd00aa68c772efd.css?a3814fd00aa68c772efd" rel="stylesheet"><link href="css/index.a3814fd00aa68c772efd.css?a3814fd00aa68c772efd" rel="stylesheet"></head> <meta http-equiv=Content-Type content="text/html; charset=UTF-8"> <meta name=viewport content="initial-scale=1,maximum-scale=1,user-scalable=no,width=device-width"> <script>window.THEME="orange"</script> <title>Index</title> </head> <body> <div id=app> <ul class=ul> <button v-for="themeName,index in THEME_NAME_ARR" :key=index @click=changeTheme(themeName)> {{themeName}} </button> </ul> </div> <script type="text/javascript" src="js/vendors-a3814fd00aa68c772efd.js?a3814fd00aa68c772efd"></script><script type="text/javascript" src="js/index-a3814fd00aa68c772efd.js?a3814fd00aa68c772efd"></script></body> </html>
+                </script><link href="css/styles.66600ab2edf5da138ead.css?66600ab2edf5da138ead" rel="stylesheet"><link href="css/index.66600ab2edf5da138ead.css?66600ab2edf5da138ead" rel="stylesheet"></head> <meta charset=UTF-8> <meta name=viewport content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1"> <meta http-equiv=X-UA-Compatible content="ie=edge"> <title>主页</title> </head> <body> <div id=app> <button>{{msg}}</button> <button @click=changeTheme>changeTheme</button> <button @click=saveTheme>saveTheme</button> <div> <img src=imgs/panda-1b1120ce08c9358b9eae0fb999803563.gif alt=""> </div> </div> <script type="text/javascript" src="js/vendors-66600ab2edf5da138ead.js?66600ab2edf5da138ead"></script><script type="text/javascript" src="js/index-66600ab2edf5da138ead.js?66600ab2edf5da138ead"></script></body> </html>

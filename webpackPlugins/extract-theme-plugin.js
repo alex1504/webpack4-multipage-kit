@@ -12,10 +12,11 @@ ExtractThemePlugin.prototype.apply = function (compiler) {
             (data) => {
                 const areaJson = JSON.parse(data.plugin.assetJson);
                 const originHtml = data.html;
-                console.log(areaJson)
+                
+                console.log(areaJson, '$$$$$')
                 areaJson.forEach(outputPath => {
                     if (outputPath.indexOf('css/theme') !== -1) {
-                        const match = outputPath.match(/(theme\w*)\./)[1];
+                        const match = outputPath.match(/(theme\w*)\./)[1].replace(/theme/i, '').toLowerCase() ;
                         THEME_CONFIG[match] = outputPath;
                     }
                 });
@@ -26,11 +27,11 @@ ExtractThemePlugin.prototype.apply = function (compiler) {
                 <script>
                     window.onload = function(){
                        const themeName = window.THEME;
-                       const themeKey = 'theme' + themeName.slice(0,1).toUpperCase() + themeName.slice(1);
-                       const href = THEME_CONFIG[themeKey];
+                       const href = THEME_CONFIG[themeName];
                        const link = document.createElement('link');
                        link.rel = 'stylesheet';
                        link.href = href;
+                       link.id = 'theme';
                        document.querySelector('head').appendChild(link)
                     }
                 </script>`;
